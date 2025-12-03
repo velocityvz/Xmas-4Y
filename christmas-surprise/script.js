@@ -1,92 +1,89 @@
-// SNOW EFFECT
-const canvas = document.getElementById("snow");
-const ctx = canvas.getContext("2d");
-let snowflakes = [];
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.onresize = resizeCanvas;
-
-// Create snowflakes
-for (let i = 0; i < 100; i++) {
-  snowflakes.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 3 + 1,
-    d: Math.random() + 1
-  });
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0a0f1f, #152445);
+  color: white;
+  overflow-x: hidden;
 }
 
-function drawSnow() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
-  ctx.beginPath();
-  for (let flake of snowflakes) {
-    ctx.moveTo(flake.x, flake.y);
-    ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2, true);
-  }
-  ctx.fill();
-  updateSnow();
+canvas#snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-function updateSnow() {
-  for (let flake of snowflakes) {
-    flake.y += Math.pow(flake.d, 2) + 1;
-    if (flake.y > canvas.height) {
-      flake.y = -10;
-      flake.x = Math.random() * canvas.width;
-    }
-  }
+.container {
+  text-align: center;
+  padding: 40px;
 }
 
-setInterval(drawSnow, 30);
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
 
-// MAIN BUTTONS
-const letterBtn = document.getElementById("letterBtn");
-const giftBtn = document.getElementById("giftBtn");
-const messageBox = document.getElementById("messageBox");
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
 
-// ❤️ Love Letter
-const loveLetter = `
-My dearest Yichen,
+.present {
+  cursor: pointer;
+  animation: bounce 2.5s infinite;
+}
 
-Merry Christmas ❤️
+.present-img {
+  width: 220px;
+}
 
-I know we’re miles apart, but that never stopped
-you from being the most important part of my life.
+.click-text {
+  margin-top: 10px;
+  opacity: 0.7;
+}
 
-You make my days better, my nights easier,
-and my heart full.
+.hidden {
+  display: none;
+}
 
-This is just a tiny gift,
-but it comes with all my love.
+.card {
+  margin: 25px auto;
+  padding: 25px;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 20px;
+}
 
-– Khari ❤️
-`;
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
 
-letterBtn.addEventListener("click", () => {
-  messageBox.classList.remove("hidden");
-  messageBox.innerText = loveLetter;
-});
+.code {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
 
-// 🎁 Gift Button → Calls Cloudflare Worker
-giftBtn.addEventListener("click", async () => {
-  messageBox.classList.remove("hidden");
-  messageBox.innerText = "Opening your present... 🎁";
+/* Animations */
 
-  const res = await fetch(
-    "https://YOUR-WORKER-URL.workers.dev/reveal?secret=lf92JDa93jskd992-sjf923"
-  );
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
 
-  const data = await res.json();
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
 
-  if (data.success) {
-    messageBox.innerText = `🎁 Your Christmas Gift Code:\n\n${data.code}\n\n❤️ Merry Christmas, Yichen!`;
-  } else {
-    messageBox.innerText = "❌ Error revealing gift.";
-  }
-});
-
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
