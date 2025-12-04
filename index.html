@@ -10,34 +10,50 @@
 
     <div id="snow"></div>
 
-    <header class="fade-in">
-        <h1>Merry Christmas, Yichen 🎄</h1>
-        <p>Made with love by Khayri 🤍</p>
-    </header>
+    <!-- PASSWORD SCREEN -->
+    <div id="passwordScreen" class="password-screen">
+        <div class="password-card">
+            <h2>🔒 Enter Password</h2>
+            <p class="password-sub">A special day only we know ❤️</p>
 
-    <main>
+            <input type="text" id="passwordInput" placeholder="Type the date..." />
+            <button onclick="checkPassword()" class="password-btn">Unlock</button>
+            <p id="passwordError" class="error-msg"></p>
+        </div>
+    </div>
 
-        <!-- LETTER CARD -->
-        <section class="card fade-in">
-            <h2>❤️ A Letter From Me</h2>
-            <p class="letter-text">
-                <!-- WRITE YOUR LETTER INSIDE THIS P TAG -->
-                (Write your Christmas letter here!)
-            </p>
-        </section>
+    <!-- MAIN CONTENT (HIDDEN UNTIL PASSWORD IS ENTERED) -->
+    <div id="mainContent" style="display: none;">
+        
+        <header class="fade-in">
+            <h1>Merry Christmas, Yichen 🎄</h1>
+            <p>Made with love by Khayri 🤍</p>
+        </header>
 
-        <!-- GIFT CARD -->
-        <section class="card fade-in">
-            <h2>🎁 Your Christmas Gift</h2>
-            <button class="reveal-btn" onclick="revealGift()">Open Gift</button>
+        <main>
 
-            <div id="giftBox" class="gift-box hidden">
-                <p>Your Roblox Gift Card Code:</p>
-                <h3 class="gift-code">lf92JDa93jskd992-sjf923</h3>
-            </div>
-        </section>
+            <!-- LETTER -->
+            <section class="card fade-in">
+                <h2>❤️ A Letter From Me</h2>
+                <p class="letter-text">
+                    (Write your Christmas letter here!)
+                </p>
+            </section>
 
-    </main>
+            <!-- GIFT -->
+            <section class="card fade-in">
+                <h2>🎁 Your Christmas Gift</h2>
+                <button class="reveal-btn" onclick="revealGift()">Open Gift</button>
+
+                <div id="giftBox" class="gift-box hidden">
+                    <p>Your Roblox Gift Card Code:</p>
+                    <h3 class="gift-code">lf92JDa93jskd992-sjf923</h3>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
 
     <script src="script.js"></script>
 </body>
