@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Christmas Yichen 🎄</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="snow"></div>
+    <!-- Soft Christmas Glow Background -->
+    <div class="background-glow"></div>
 
     <!-- PASSWORD SCREEN -->
     <div id="passwordScreen" class="password-screen">
         <div class="password-card">
-            <h2>🔒 Enter Password</h2>
-            <p class="password-sub">A special day only we know ❤️</p>
+            <h2>🎄 Enter Password</h2>
+            <p>A special day only we know ❤️</p>
 
-            <input type="text" id="passwordInput" placeholder="Type the date..." />
-            <button onclick="checkPassword()" class="password-btn">Unlock</button>
+            <input type="text" id="passwordInput" placeholder="Enter the date..." />
+            <button onclick="checkPassword()">Unlock</button>
             <p id="passwordError" class="error-msg"></p>
         </div>
     </div>
 
-    <!-- MAIN CONTENT (HIDDEN UNTIL PASSWORD IS ENTERED) -->
-    <div id="mainContent" style="display: none;">
-        
+    <!-- MAIN CONTENT -->
+    <div id="mainContent" class="hidden">
         <header class="fade-in">
             <h1>Merry Christmas, Yichen 🎄</h1>
-            <p>Made with love by Khayri 🤍</p>
+            <p>Made just for you ❤️</p>
         </header>
 
         <main>
 
-            <!-- LETTER -->
+            <!-- LETTER CARD -->
             <section class="card fade-in">
                 <h2>❤️ A Letter From Me</h2>
                 <p class="letter-text">
-                    (Write your Christmas letter here!)
+                    (your letter goes here!)
                 </p>
             </section>
 
-            <!-- GIFT -->
+            <!-- GIFT CARD -->
             <section class="card fade-in">
                 <h2>🎁 Your Christmas Gift</h2>
-                <button class="reveal-btn" onclick="revealGift()">Open Gift</button>
+                <button class="open-btn" onclick="revealGift()">Open Gift</button>
 
                 <div id="giftBox" class="gift-box hidden">
                     <p>Your Roblox Gift Card Code:</p>
@@ -52,9 +52,8 @@
             </section>
 
         </main>
-
     </div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
