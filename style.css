@@ -1,50 +1,126 @@
-function openPresent() {
-  document.getElementById("openSound").play();
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-  document.querySelector(".present").style.display = "none";
-
-  const content = document.getElementById("content");
-  content.classList.remove("hidden");
-  content.classList.add("fade-in");
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #0a0f1f, #1a233a);
+    color: white;
+    overflow-x: hidden;
 }
 
-// Snowfall animation
-const canvas = document.getElementById("snow");
-const ctx = canvas.getContext("2d");
-
-let width = canvas.width = window.innerWidth;
-let height = canvas.height = window.innerHeight;
-
-let snowflakes = [];
-
-function createSnowflakes() {
-  const count = 150;
-  for (let i = 0; i < count; i++) {
-    snowflakes.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: Math.random() * 3 + 1,
-      speed: Math.random() * 1 + 0.5
-    });
-  }
+/* Center Content */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
 }
 
-function snow() {
-  ctx.clearRect(0, 0, width, height);
-
-  snowflakes.forEach(flake => {
-    flake.y += flake.speed;
-
-    if (flake.y > height) flake.y = -5;
-
-    ctx.beginPath();
-    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "white";
-    ctx.fill();
-  });
-
-  requestAnimationFrame(snow);
+header {
+    text-align: center;
+    padding: 20px;
 }
 
-createSnowflakes();
-snow();
+/* Frosted Glass Card */
+.card {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 25px;
+    border-radius: 16px;
+    animation: fadeUp 1.5s ease both;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+h1, h2 {
+    margin-top: 0;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+.letter-text {
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* Gift Code Box */
+.gift-box {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.gift-code {
+    margin: 5px 0 0 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Reveal Button */
+.reveal-btn {
+    background: #ff3b59;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.reveal-btn:hover {
+    background: #ff637a;
+}
+
+/* Fade Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Snow Effect */
+#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: rgba(255,255,255,0.9);
+    user-select: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10px); }
+    to { transform: translateY(110vh); }
+}
