@@ -1,70 +1,136 @@
-/* PASSWORD SCREEN */
-.password-screen {
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #0c1224;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* SOFT CHRISTMAS BACKGROUND GLOW */
+.background-glow {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0a0f1f, #1a233a);
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,0,0,0.25), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0,150,255,0.25), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(0,255,150,0.2), transparent 40%);
+    filter: blur(60px);
+    z-index: -1;
+}
+
+/* PASSWORD SCREEN */
+.password-screen {
+    position: fixed;
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000;
+    background: rgba(10, 16, 32, 0.9);
 }
 
 .password-card {
-    backdrop-filter: blur(15px);
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 30px;
-    border-radius: 18px;
-    width: 85%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 370px;
     text-align: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    animation: fadeUp 1.2s ease both;
-}
-
-.password-card h2 {
-    margin-top: 0;
-    color: #fff;
-}
-
-.password-sub {
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 20px;
+    padding: 28px;
+    border-radius: 18px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: fadeUp 1s ease;
 }
 
 .password-card input {
     width: 90%;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: none;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.2);
+    color: white;
     outline: none;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    background: rgba(255,255,255,0.15);
-    color: white;
 }
 
-.password-btn {
-    width: 90%;
-    background: #ff3b59;
+.password-card button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #ff4d6d;
     border: none;
-    padding: 12px;
-    font-size: 1.1rem;
     color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: .3s;
 }
 
-.password-btn:hover {
-    background: #ff6a7c;
+.password-card button:hover {
+    background: #ff6f88;
 }
 
 .error-msg {
-    color: #ff6363;
-    margin-top: 10px;
-    min-height: 20px;
+    margin-top: 8px;
+    color: #ff7a7a;
+}
+
+/* HIDE CLASS */
+.hidden {
+    display: none;
+}
+
+/* MAIN CARDS */
+.card {
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 25px;
+    margin: 25px auto;
+    max-width: 600px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* GIFT BOX */
+.open-btn {
+    padding: 12px 20px;
+    background: #1fa2ff;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.open-btn:hover {
+    background: #52bdff;
+}
+
+.gift-box {
+    margin-top: 18px;
+    padding: 18px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 14px;
+}
+
+/* ANIMATIONS */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
