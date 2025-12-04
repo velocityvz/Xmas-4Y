@@ -1,0 +1,50 @@
+function openPresent() {
+  document.getElementById("openSound").play();
+
+  document.querySelector(".present").style.display = "none";
+
+  const content = document.getElementById("content");
+  content.classList.remove("hidden");
+  content.classList.add("fade-in");
+}
+
+// Snowfall animation
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+let snowflakes = [];
+
+function createSnowflakes() {
+  const count = 150;
+  for (let i = 0; i < count; i++) {
+    snowflakes.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 3 + 1,
+      speed: Math.random() * 1 + 0.5
+    });
+  }
+}
+
+function snow() {
+  ctx.clearRect(0, 0, width, height);
+
+  snowflakes.forEach(flake => {
+    flake.y += flake.speed;
+
+    if (flake.y > height) flake.y = -5;
+
+    ctx.beginPath();
+    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+  });
+
+  requestAnimationFrame(snow);
+}
+
+createSnowflakes();
+snow();
