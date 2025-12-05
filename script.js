@@ -1,9 +1,15 @@
-// PASSWORD
 function checkPassword() {
-    let input = document.getElementById("password-input").value;
+    let input = document.getElementById("password-input").value.trim().toLowerCase();
     let error = document.getElementById("error");
 
-    if (input === "november 8th") {
+    const validPasswords = [
+        "november 8th",
+        "november 8",
+        "nov 8",
+        "nov 8th"
+    ];
+
+    if (validPasswords.includes(input)) {
         document.getElementById("password-screen").classList.add("hidden");
         document.getElementById("gift-page").classList.remove("hidden");
     } else {
